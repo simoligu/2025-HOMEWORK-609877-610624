@@ -1,16 +1,13 @@
-import java.util.ArrayList;
-import java.util.List;
 public class Labirinto {
-	//ha la responsabilità di creare il labirinto, di memorizzare la stanza iniziale (entrata) e quella finale (uscita)
-	public String entrate;
-	public String finale;
-	public List<String> stanze;
-		
+	private Stanza entrata;
+	private Stanza uscita;
+
 	public Labirinto() {
-		this.stanze=new ArrayList<>();
+		creaLabirinto();
 	}
-}
-	public void creaLabirinto() {
+	private void creaLabirinto() {
+		Attrezzo lanterna = new Attrezzo("lanterna",3);
+		Attrezzo osso = new Attrezzo("osso",1);
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
 		Stanza aulaN11 = new Stanza("Aula N11");
@@ -32,6 +29,11 @@ public class Labirinto {
 		laboratorio.impostaStanzaAdiacente("ovest", aulaN11);
 		biblioteca.impostaStanzaAdiacente("sud", atrio);
 		
-			
-	}
+		 /* pone gli attrezzi nelle stanze */
+		aulaN10.addAttrezzo(lanterna);
+		atrio.addAttrezzo(osso);
 
+		this.entrata = atrio;
+		this.uscita = biblioteca;
+	}
+}
