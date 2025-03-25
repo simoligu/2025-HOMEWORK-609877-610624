@@ -40,4 +40,23 @@ public class Giocatore {
 	public String toString() {
 		return "Giocatore: "+this.nome + ", CFU: " +this.cfu + ", Contenuto borsa: " +this.getContenutoBorsa();
 	}
+	
+	public boolean prendiAttrezzo(Attrezzo attrezzo, Stanza stanza) {
+		if(stanza.hasAttrezzo(attrezzo.getNome())) {
+			if(this.borsa.addAttrezzo(attrezzo));
+			stanza.removeAttrezzo(attrezzo);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean posaAttrezzo(Attrezzo attrezzo, Stanza stanza) {
+		if(this.borsa.hasAttrezzo(attrezzo.getNome())) {
+			if(stanza.addAttrezzo(attrezzo)) {
+				this.borsa.removeAttrezzo(attrezzo.getNome());
+				return true;
+			}
+		}
+		return false;
+	}
 }

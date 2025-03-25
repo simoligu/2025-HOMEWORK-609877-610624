@@ -18,7 +18,7 @@ public class Partita {
 	private Stanza stanzaVincente;
 	private boolean finita;
 	private int cfu;
-	private Giocatore giocatore1 = new Giocatore("Mario", 50); 
+	private Giocatore giocatore1 = new Giocatore("Mario", CFU_INIZIALI); 
 	
 	public Partita(){
 		creaStanze();

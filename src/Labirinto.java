@@ -33,7 +33,7 @@ public class Labirinto {
 		aulaN10.addAttrezzo(lanterna);
 		atrio.addAttrezzo(osso);
 
-		this.entrata = atrio;
-		this.uscita = biblioteca;
+//		this.entrata = atrio;
+//		this.uscita = biblioteca;
 	}
 }

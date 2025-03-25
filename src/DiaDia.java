@@ -80,6 +80,7 @@ public class DiaDia {
 			System.out.print(elencoComandi[i]+" ");
 		System.out.println();
 	}
+	
 
 	/**
 	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
