@@ -12,6 +12,7 @@
  * @see Attrezzo
  * @version base
 */
+package it.uniroma3.diadia.ambienti;
 
 public class Stanza {
 	
