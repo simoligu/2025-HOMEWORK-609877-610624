@@ -1,3 +1,7 @@
+package it.uniroma3.diadia.giocatore;
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
+
 public class Giocatore {
 	String nome;		
 	int cfu;			//cfu del giocatore
