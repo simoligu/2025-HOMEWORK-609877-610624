@@ -29,6 +29,29 @@ class BorsaTest {
 	    // Verifica che la borsa contenga ancora "Scudo"
 	    assertNotNull(borsa.getAttrezzo("Scudo"));
 	}
+	
+	@Test
+	public void testRemoveAttrezzoRiduceNumeroAttrezzi() {
+	    Borsa borsa = new Borsa();
+	    Attrezzo spada = new Attrezzo("Spada", 5);
+	    Attrezzo scudo = new Attrezzo("Scudo", 8);
+	    
+	    // Aggiungi attrezzi alla borsa
+	    borsa.addAttrezzo(spada);
+	    borsa.addAttrezzo(scudo);
+	    
+	    // Verifica che inizialmente la borsa contenga due attrezzi
+	    assertEquals(2, borsa.getNumeroAttrezzi());
+	    
+	    // Rimuovi l'attrezzo "Spada"
+	    borsa.removeAttrezzo("Spada");
+	    
+	    // Verifica che il numero di attrezzi nella borsa sia ora 1
+	    assertEquals(1, borsa.getNumeroAttrezzi());
+	    
+	    // Verifica che la borsa contenga ancora "Scudo"
+	    assertNotNull(borsa.getAttrezzo("Scudo"));
+	}
 
 
 }
