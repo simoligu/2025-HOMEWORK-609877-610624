@@ -1,8 +1,5 @@
 package it.uniroma3.diadia;
 
-
-import java.util.Scanner;
-
 import it.uniroma3.diadia.ambienti.Stanza;
 
 /**
@@ -32,19 +29,21 @@ public class DiaDia {
 	static final private String[] elencoComandi = {"vai", "aiuto", "fine"};
 
 	private Partita partita;
+	private IOConsole ioConsole;		//dichiarazione di ioconsole
 
-	public DiaDia() {
+	public DiaDia(IOConsole ioConsole) {
 		this.partita = new Partita();
+		this.ioConsole = ioConsole;		//inizializzo l'istanza di ioconsole a quella che gli viene passata dal costruttore
 	}
 
 	public void gioca() {
 		String istruzione; 
-		Scanner scannerDiLinee;
+//		Scanner scannerDiLinee;		//rimuovo lo scanner perchè ora farà tutto ioConsole
 
-		System.out.println(MESSAGGIO_BENVENUTO);
-		scannerDiLinee = new Scanner(System.in);		
+		ioConsole.mostraMessaggio(MESSAGGIO_BENVENUTO);		//stampa il messaggio tramite ioConsole.mostraMessaggio
+//		scannerDiLinee = new Scanner(System.in);		
 		do		
-			istruzione = scannerDiLinee.nextLine();
+			istruzione = ioConsole.leggiRiga();				//leggi input tramite ioConsole.leggiRiga
 		while (!processaIstruzione(istruzione));
 	}   
 
@@ -65,9 +64,9 @@ public class DiaDia {
 			else if (comandoDaEseguire.getNome().equals("aiuto"))
 				this.aiuto();
 			else
-				System.out.println("Comando sconosciuto");
+				ioConsole.mostraMessaggio("Comando sconosciuto");
 			if (this.partita.vinta()) {
-				System.out.println("Hai vinto!");
+				ioConsole.mostraMessaggio("Hai vinto!");
 				return true;
 			} else
 				return false;
@@ -91,28 +90,29 @@ public class DiaDia {
 	 */
 	private void vai(String direzione) {
 		if(direzione==null)
-			System.out.println("Dove vuoi andare ?");
+			ioConsole.mostraMessaggio("Dove vuoi andare ?");
 		Stanza prossimaStanza = null;
 		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null)
-			System.out.println("Direzione inesistente");
+			ioConsole.mostraMessaggio("Direzione inesistente");
 		else {
 			this.partita.setStanzaCorrente(prossimaStanza);
 			int cfu = this.partita.getCfu();
 			this.partita.setCfu(cfu--);
 		}
-		System.out.println(partita.getStanzaCorrente().getDescrizione());
+		ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 	}
 
 	/**
 	 * Comando "Fine".
 	 */
 	private void fine() {
-		System.out.println("Grazie di aver giocato!");  // si desidera smettere
+		ioConsole.mostraMessaggio("Grazie di aver giocato!");  // si desidera smettere
 	}
 
 	public static void main(String[] argc) {
-		DiaDia gioco = new DiaDia();
+		IOConsole ioConsole = new IOConsole();		//creo un'istanza di ioconsole
+		DiaDia gioco = new DiaDia(ioConsole);		//passo l'istanza di ioconsole al costruttore di diadia
 		gioco.gioca();
 	}
 }
