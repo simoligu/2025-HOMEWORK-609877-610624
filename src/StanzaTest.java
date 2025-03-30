@@ -80,7 +80,7 @@ class StanzaTest {
 		Stanza stanza = new Stanza("Stanza di prova");
 		//riempio la stanza con il numero massimo di attrezzi
 		for(int i=0;i<Stanza.getNumeroMassimoAttrezzi();i++) {
-			stanza.addAttrezzo(new Attrezzo("Attrezzo" +(i+1), i));
+			stanza.addAttrezzo(new Attrezzo("Attrezzo" +(i+1), 1));
 		}
 		//creo un attrezzo extra
 		Attrezzo attrezzoExtra = new Attrezzo("Extra", 10);
