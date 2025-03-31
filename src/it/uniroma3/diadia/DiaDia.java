@@ -30,7 +30,7 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 	
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine"};
+	static final private String[] elencoComandi = {"vai","aiuto","fine","prendi","posa"};
 
 	private Partita partita;
 	private IOConsole ioConsole;		//dichiarazione di ioconsole
@@ -85,7 +85,7 @@ public class DiaDia {
 		if(attrezzo!=null) {
 			boolean aggiunto=this.partita.getGiocatore().prendiAttrezzo(attrezzo,stanzaCorrente);
 			if(aggiunto) {
-				ioConsole.mostraMessaggio("Hai preso: "+nomeAttrezzo);
+				ioConsole.mostraMessaggio("Hai preso: "+nomeAttrezzo+". Peso borsa: "+this.partita.getGiocatore().getBorsa().getPeso()+"Kg/"+this.partita.getGiocatore().getBorsa().getPesoMax()+"Kg");
 			}
 			else {
 				ioConsole.mostraMessaggio("impossibile prendere: "+nomeAttrezzo);

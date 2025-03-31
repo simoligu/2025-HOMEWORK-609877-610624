@@ -49,9 +49,10 @@ public class Giocatore {
 	}
 	public boolean prendiAttrezzo(Attrezzo attrezzo, Stanza stanza) {
 		if(stanza.hasAttrezzo(attrezzo.getNome())) {
-			if(this.borsa.addAttrezzo(attrezzo));
+			if(this.borsa.addAttrezzo(attrezzo)) {
 			stanza.removeAttrezzo(attrezzo);
 			return true;
+			}
 		}
 		return false;
 	}
