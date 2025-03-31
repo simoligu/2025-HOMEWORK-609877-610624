@@ -1,16 +1,18 @@
 package it.uniroma3.diadia.ambienti;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.ambienti.Stanza;
 
 public class Labirinto {
-	private Stanza entrata;
-	private Stanza uscita;
+	public Stanza entrata;
+	public Stanza uscita;
 
 	public Labirinto() {
 		creaLabirinto();
 	}
-	private void creaLabirinto() {
+	public void creaLabirinto() {
 		Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
+		Attrezzo piccone = new Attrezzo("piccone",9);
 		/* crea stanze del labirinto */
 		Stanza atrio = new Stanza("Atrio");
 		Stanza aulaN11 = new Stanza("Aula N11");
@@ -35,8 +37,8 @@ public class Labirinto {
 		 /* pone gli attrezzi nelle stanze */
 		aulaN10.addAttrezzo(lanterna);
 		atrio.addAttrezzo(osso);
-
-//		this.entrata = atrio;
-//		this.uscita = biblioteca;
+		atrio.addAttrezzo(piccone);
+		entrata = atrio;
+		uscita= biblioteca;
 	}
 }

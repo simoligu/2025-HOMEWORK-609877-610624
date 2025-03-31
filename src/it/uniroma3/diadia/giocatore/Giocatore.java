@@ -10,7 +10,7 @@ public class Giocatore {
 	public Giocatore(String nome, int CFUiniziali) {
 		this.nome = nome;
 		this.cfu = CFUiniziali;
-		this.borsa = new Borsa();		//ogni giocatore ha la propria borsa
+		this.borsa = new Borsa(10);		//ogni giocatore ha la propria borsa
 	}
 	
 	public String getNome() {
@@ -44,7 +44,9 @@ public class Giocatore {
 	public String toString() {
 		return "Giocatore: "+this.nome + ", CFU: " +this.cfu + ", Contenuto borsa: " +this.getContenutoBorsa();
 	}
-	
+	public Borsa getBorsa() {
+		return this.borsa;
+	}
 	public boolean prendiAttrezzo(Attrezzo attrezzo, Stanza stanza) {
 		if(stanza.hasAttrezzo(attrezzo.getNome())) {
 			if(this.borsa.addAttrezzo(attrezzo));

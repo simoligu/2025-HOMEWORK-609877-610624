@@ -1,7 +1,11 @@
 package it.uniroma3.diadia;
 
 import it.uniroma3.diadia.ambienti.Stanza;
-
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.giocatore.Giocatore;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.giocatore.Borsa;
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
  * Per giocare crea un'istanza di questa classe e invoca il letodo gioca
@@ -61,6 +65,10 @@ public class DiaDia {
 				return true;
 			} else if (comandoDaEseguire.getNome().equals("vai"))
 				this.vai(comandoDaEseguire.getParametro());
+			else if (comandoDaEseguire.getNome().equals("prendi"))
+				this.prendi(comandoDaEseguire.getParametro());
+			else if (comandoDaEseguire.getNome().equals("posa"))
+				this.posa(comandoDaEseguire.getParametro());
 			else if (comandoDaEseguire.getNome().equals("aiuto"))
 				this.aiuto();
 			else
@@ -71,7 +79,38 @@ public class DiaDia {
 			} else
 				return false;
 	}   
-
+	private void prendi(String nomeAttrezzo) {
+		Stanza stanzaCorrente=this.partita.getStanzaCorrente();
+		Attrezzo attrezzo=stanzaCorrente.getAttrezzo(nomeAttrezzo);
+		if(attrezzo!=null) {
+			boolean aggiunto=this.partita.getGiocatore().prendiAttrezzo(attrezzo,stanzaCorrente);
+			if(aggiunto) {
+				ioConsole.mostraMessaggio("Hai preso: "+nomeAttrezzo);
+			}
+			else {
+				ioConsole.mostraMessaggio("impossibile prendere: "+nomeAttrezzo);
+			}
+		}
+		else {
+			ioConsole.mostraMessaggio("L`attrezzo non è presente nella stanza");
+		}
+	}
+	private void posa(String nomeAttrezzo) {
+		Borsa borsa=this.partita.getGiocatore().getBorsa();
+		Attrezzo attrezzo=borsa.getAttrezzo(nomeAttrezzo);
+		if(attrezzo!=null) {
+			boolean	posato=this.partita.getGiocatore().posaAttrezzo(attrezzo,this.partita.getStanzaCorrente());
+			if(posato) {
+				ioConsole.mostraMessaggio("Hai posato: "+nomeAttrezzo);
+			}
+			else {
+				ioConsole.mostraMessaggio("impossibile posare: "+nomeAttrezzo);
+			}
+		}
+		else {
+			ioConsole.mostraMessaggio("L`attrezzo non è presente nella Borsa");
+		}
+	}
 	// implementazioni dei comandi dell'utente:
 
 	/**
@@ -102,7 +141,7 @@ public class DiaDia {
 		}
 		ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 	}
-
+	
 	/**
 	 * Comando "Fine".
 	 */
