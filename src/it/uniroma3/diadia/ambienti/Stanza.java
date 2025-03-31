@@ -137,10 +137,14 @@ public class Stanza {
     	for (String direzione : this.direzioni)
     		if (direzione!=null)
     			risultato.append(" " + direzione);
-    	risultato.append("\nAttrezzi nella stanza: ");
-    	for (Attrezzo attrezzo : this.attrezzi) {
-    		if(attrezzo!=null)		//se attrezzo è diverso da null può essere aggiunto alla stringa finale risultato
-    			risultato.append(attrezzo.toString()+" ");
+    	if(this.numeroAttrezzi==0) {
+    		risultato.append("\nNella stanza non ci sono attrezzi");
+    	}else {
+    		risultato.append("\nAttrezzi nella stanza: ");
+        	for (Attrezzo attrezzo : this.attrezzi) {
+        		if(attrezzo!=null)		//se attrezzo è diverso da null può essere aggiunto alla stringa finale risultato
+        			risultato.append(attrezzo.toString()+" ");
+        	}
     	}
     	return risultato.toString();
     }
