@@ -73,11 +73,17 @@ public class DiaDia {
 				this.aiuto();
 			else
 				ioConsole.mostraMessaggio("Comando sconosciuto");
-			if (this.partita.vinta()) {
-				ioConsole.mostraMessaggio("Hai vinto!");
+		
+			if(this.partita.isFinita()) {
+				if(this.partita.vinta()) {
+					ioConsole.mostraMessaggio("CONGRATULAZIONI HAI VINTO!");
+				}
+				else {
+				ioConsole.mostraMessaggio("HAI PERSO! CFU ESAURITI");
+				}
 				return true;
-			} else
-				return false;
+			}
+			return false;
 	}   
 	private void prendi(String nomeAttrezzo) {
 		Stanza stanzaCorrente=this.partita.getStanzaCorrente();
@@ -128,17 +134,21 @@ public class DiaDia {
 	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
 	 */
 	private void vai(String direzione) {
-		if(direzione==null)
+		if(direzione==null) {
 			ioConsole.mostraMessaggio("Dove vuoi andare ?");
+		}
+
 		Stanza prossimaStanza = null;
 		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
-		if (prossimaStanza == null)
+		if (prossimaStanza == null) {
 			ioConsole.mostraMessaggio("Direzione inesistente");
-		else {
-			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.getCfu();
-			this.partita.setCfu(cfu--);
 		}
+		else {
+			int cfu = this.partita.getGiocatore().getCfu();
+			this.partita.getGiocatore().setCfu(--cfu);
+			ioConsole.mostraMessaggio("CFU rimanenti: " +cfu);
+		}
+		this.partita.setStanzaCorrente(prossimaStanza);
 		ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 	}
 	

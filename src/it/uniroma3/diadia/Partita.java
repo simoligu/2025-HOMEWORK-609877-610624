@@ -12,7 +12,7 @@ import it.uniroma3.diadia.ambienti.Labirinto;
 
 public class Partita {
 
-	static final private int CFU_INIZIALI = 20;
+	static final private int CFU_INIZIALI = 2;
 
 	private Stanza stanzaCorrente;
 	private Stanza stanzaVincente;
@@ -92,7 +92,7 @@ public class Partita {
 	 * @return vero se partita finita
 	 */
 	public boolean isFinita() {
-		return finita || vinta() || (cfu == 0);
+		return finita || vinta() || (this.giocatore.getCfu() == 0);
 	}
 
 	/**
