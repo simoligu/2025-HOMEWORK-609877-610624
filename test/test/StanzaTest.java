@@ -124,6 +124,19 @@ class StanzaTest {
 		assertTrue(stanza.hasAttrezzo("Computer"));
 		assertFalse(stanza.hasAttrezzo("Scatola"));
 	}
+
+
+		
+		@Test
+	public void testRimuoviAttrezzo() {
+		Stanza stanza = new Stanza("Sala di esempio");
+		Attrezzo attrezzo = new Attrezzo("Lampada", 2);
+		stanza.addAttrezzo(attrezzo);
+		assertTrue(stanza.hasAttrezzo("Lampada"));
+		stanza.removeAttrezzo(attrezzo);
+		assertFalse(stanza.hasAttrezzo("Lampada"));
+	}
+
 }
 
 	
