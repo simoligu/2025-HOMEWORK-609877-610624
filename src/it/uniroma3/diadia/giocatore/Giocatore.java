@@ -42,7 +42,7 @@ public class Giocatore {
 	}
 	//metodo per ottenere tutte le informazioni sul giocatore
 	public String toString() {
-		return "Giocatore: "+this.nome + ", CFU: " +this.cfu + ", Contenuto borsa: " +this.getContenutoBorsa();
+		return "Giocatore: "+this.nome+", CFU: "+this.cfu+", "+this.getContenutoBorsa();
 	}
 	public Borsa getBorsa() {
 		return this.borsa;
