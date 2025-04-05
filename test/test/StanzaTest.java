@@ -124,10 +124,8 @@ class StanzaTest {
 		assertTrue(stanza.hasAttrezzo("Computer"));
 		assertFalse(stanza.hasAttrezzo("Scatola"));
 	}
-
-
 		
-		@Test
+	@Test
 	public void testRimuoviAttrezzo() {
 		Stanza stanza = new Stanza("Sala di esempio");
 		Attrezzo attrezzo = new Attrezzo("Lampada", 2);
@@ -136,7 +134,28 @@ class StanzaTest {
 		stanza.removeAttrezzo(attrezzo);
 		assertFalse(stanza.hasAttrezzo("Lampada"));
 	}
-
+	
+	@Test
+	public void testToStringZeroUsciteUnAttrezzo() {
+		Stanza stanza = new Stanza("Stanza di prova");
+		Attrezzo spada = new Attrezzo("Spada", 5);
+		stanza.addAttrezzo(spada);
+		String risultato = stanza.toString();
+		assertTrue(risultato.contains("Uscite: "));
+		String toStringAttrezzo = spada.toString();
+		assertTrue(risultato.contains(toStringAttrezzo));
+	}
+	
+	@Test
+	public void testToStringZeroAttrezziUnUscita() {
+		Stanza stanza = new Stanza("Stanza di prova");
+		Stanza stanzaAdiacente = new Stanza("Stanza adiacente");
+		stanza.impostaStanzaAdiacente("nord", stanzaAdiacente);
+		String risultato = stanza.toString();
+		System.out.println(risultato);
+		assertTrue(risultato.contains("Uscite: nord"));
+		assertTrue(risultato.contains("Nella stanza non ci sono attrezzi."));
+	}
 }
 
 	

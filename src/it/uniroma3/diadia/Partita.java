@@ -12,7 +12,7 @@ import it.uniroma3.diadia.ambienti.Labirinto;
 
 public class Partita {
 
-	static final private int CFU_INIZIALI = 2;
+	static final private int CFU_INIZIALI = 20;
 
 	private Stanza stanzaCorrente;
 	private Stanza stanzaVincente;
