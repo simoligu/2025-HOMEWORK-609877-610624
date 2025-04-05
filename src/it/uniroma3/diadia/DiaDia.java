@@ -94,7 +94,7 @@ public class DiaDia {
 				ioConsole.mostraMessaggio("Hai preso: "+nomeAttrezzo+". Peso borsa: "+this.partita.getGiocatore().getBorsa().getPeso()+"Kg/"+this.partita.getGiocatore().getBorsa().getPesoMax()+"Kg");
 			}
 			else {
-				ioConsole.mostraMessaggio("impossibile prendere: "+nomeAttrezzo);
+				ioConsole.mostraMessaggio("impossibile prendere "+nomeAttrezzo+" perchè non hai abbastanza spazio.");
 			}
 		}
 		else {
