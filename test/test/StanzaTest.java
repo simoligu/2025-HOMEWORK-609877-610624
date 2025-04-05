@@ -143,7 +143,7 @@ class StanzaTest {
 		String risultato = stanza.toString();
 		assertTrue(risultato.contains("Uscite: "));
 		String toStringAttrezzo = spada.toString();
-		assertTrue(risultato.contains(toStringAttrezzo));
+		assertTrue(risultato.contains(toStringAttrezzo));		//per verificare anche che il toString in attrezzo funzioni correttamente
 	}
 	
 	@Test
@@ -154,6 +154,14 @@ class StanzaTest {
 		String risultato = stanza.toString();
 		System.out.println(risultato);
 		assertTrue(risultato.contains("Uscite: nord"));
+		assertTrue(risultato.contains("Nella stanza non ci sono attrezzi."));
+	}
+	
+	@Test
+	public void testToStringVuoto() {
+		Stanza stanza = new Stanza("Stanza di prova");
+		String risultato = stanza.toString();
+		assertTrue(risultato.contains("Uscite: "));
 		assertTrue(risultato.contains("Nella stanza non ci sono attrezzi."));
 	}
 }

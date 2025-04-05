@@ -134,17 +134,20 @@ public class Stanza {
     	StringBuilder risultato = new StringBuilder();
     	risultato.append(this.nome);
     	risultato.append("\nUscite: ");
-    	for (String direzione : this.direzioni)
-    		if (direzione!=null)
+    	for (String direzione : this.direzioni) {
+    		if (direzione!=null) {
     			risultato.append("" + direzione);
+    		}
+    	}
     	if(this.numeroAttrezzi==0) {
     		risultato.append("\nNella stanza non ci sono attrezzi.");
-    	}else {
+    	}
+    	else {
     		risultato.append("\nAttrezzi nella stanza: ");
-        	for (Attrezzo attrezzo : this.attrezzi) {
-        		if(attrezzo!=null)		//se attrezzo è diverso da null può essere aggiunto alla stringa finale risultato
-        			risultato.append(attrezzo.toString()+" ");
-        	}
+    		for (Attrezzo attrezzo : this.attrezzi) {
+    			if(attrezzo!=null)		//se attrezzo è diverso da null può essere aggiunto alla stringa finale risultato
+    				risultato.append(attrezzo.toString()+" ");
+    		}
     	}
     	return risultato.toString();
     }
