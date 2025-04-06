@@ -136,7 +136,7 @@ public class Stanza {
     	risultato.append("\nUscite: ");
     	for (String direzione : this.direzioni) {
     		if (direzione!=null) {
-    			risultato.append("" + direzione);
+    			risultato.append(""+direzione+" ");
     		}
     	}
     	if(this.numeroAttrezzi==0) {

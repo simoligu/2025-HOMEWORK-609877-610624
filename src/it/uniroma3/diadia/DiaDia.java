@@ -1,9 +1,6 @@
 package it.uniroma3.diadia;
 
 import it.uniroma3.diadia.ambienti.Stanza;
-import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.Partita;
-import it.uniroma3.diadia.giocatore.Giocatore;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Borsa;
 /**
@@ -107,7 +104,7 @@ public class DiaDia {
 		if(attrezzo!=null) {
 			boolean	posato=this.partita.getGiocatore().posaAttrezzo(attrezzo,this.partita.getStanzaCorrente());
 			if(posato) {
-				ioConsole.mostraMessaggio("Hai posato: "+nomeAttrezzo);
+				ioConsole.mostraMessaggio("Hai posato: "+nomeAttrezzo+". Peso borsa: "+this.partita.getGiocatore().getBorsa().getPeso()+"Kg/"+this.partita.getGiocatore().getBorsa().getPesoMax()+"Kg");
 			}
 			else {
 				ioConsole.mostraMessaggio("impossibile posare: "+nomeAttrezzo);
@@ -138,8 +135,7 @@ public class DiaDia {
 			ioConsole.mostraMessaggio("Dove vuoi andare ?");
 		}
 
-		Stanza prossimaStanza = null;
-		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
+		Stanza prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null) {
 			ioConsole.mostraMessaggio("Direzione inesistente");
 		}
@@ -148,9 +144,12 @@ public class DiaDia {
 			this.partita.getGiocatore().setCfu(--cfu);
 			ioConsole.mostraMessaggio("CFU rimanenti: " +cfu);
 		}
-		this.partita.setStanzaCorrente(prossimaStanza);
-		ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
+		if(prossimaStanza!=null) {
+			this.partita.setStanzaCorrente(prossimaStanza);
+			ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
+		}
 	}
+
 	
 	/**
 	 * Comando "Fine".

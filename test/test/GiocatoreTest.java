@@ -58,7 +58,6 @@ public class GiocatoreTest {
         Giocatore giocatore = new Giocatore("Andrea", 5);
         Borsa borsa = giocatore.getBorsa();
         assertNotNull(borsa);
-        assertTrue(borsa instanceof Borsa);
     }
     @Test
     public void testAggiungiAttrezzoAllaBorsa() {
@@ -89,6 +88,7 @@ public class GiocatoreTest {
     public void testPosaAttrezzo() {
     	setUp();
         giocatore.aggiungiAttrezzoAllaBorsa(attrezzo);
+        assertTrue(giocatore.haAttrezzo("lanterna"));
         assertTrue(giocatore.posaAttrezzo(attrezzo, stanza));
         assertFalse(giocatore.haAttrezzo("lanterna"));
         assertTrue(stanza.hasAttrezzo("lanterna"));

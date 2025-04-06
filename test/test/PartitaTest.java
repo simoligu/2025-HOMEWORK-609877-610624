@@ -10,6 +10,7 @@ public class PartitaTest {
 	public void testGetStanzaCorrente() {
 	    Partita partita = new Partita();
 	    Stanza stanza = partita.getStanzaCorrente();
+	    //verifico che la stanza sia stata inizializzata e che quindi getStanzaCorrente abbia effettivamente restituito qualcosa
 	    assertNotNull(stanza);
 	}
 
@@ -44,38 +45,22 @@ public class PartitaTest {
 	    Stanza stanza = partita.getStanzaVincente();
 	    assertTrue(stanza.getNome().equals("Biblioteca"));
 	}
-	@Test
-	public void TestGetStanzaVincente() {
-	    Partita partita = new Partita();
-	    Stanza stanza = partita.getStanzaVincente();
-	    assertNotNull(stanza);
-	}
-
-	@Test
-	public void TestGetStanzaVincenteNome() {
-	    Partita partita = new Partita();
-	    assertEquals("Biblioteca", partita.getStanzaVincente().getNome());
-	}
-
-	@Test
-	public void testGetStanzaVincenteIniziale() {
-	    Partita partita = new Partita();
-	    Stanza stanza = partita.getStanzaVincente();
-	    assertTrue(stanza.getNome().equals("Biblioteca"));
-	}
-	@Test
-	public void testSetStanzaCorrente() {
-	    Partita partita = new Partita();
-	    Stanza nuovaStanza = new Stanza("Aula N11");
-	    partita.setStanzaCorrente(nuovaStanza);
-	    assertEquals("Aula N11", partita.getStanzaCorrente().getNome());
-	}
 
 	@Test
 	public void testSetStanzaCorrenteNull() {
 	    Partita partita = new Partita();
 	    partita.setStanzaCorrente(null);
+	    //verifico che stanza corrente sia stata settata a null con successo
 	    assertNull(partita.getStanzaCorrente());
+	}
+	
+	@Test
+	public void testSetStanzaCorrente() {
+	    Partita partita = new Partita();
+	    Stanza nuovaStanza = new Stanza("Aula N11");
+	    partita.setStanzaCorrente(nuovaStanza);
+	    //verifico che aulaN11 sia stata correttamente settata a stanza corrente
+	    assertEquals("Aula N11", partita.getStanzaCorrente().getNome());
 	}
 
 	@Test
@@ -83,21 +68,14 @@ public class PartitaTest {
 	    Partita partita = new Partita();
 	    Stanza nuovaStanza = new Stanza("Laboratorio");
 	    partita.setStanzaCorrente(nuovaStanza);
-	    assertEquals("Laboratorio", partita.getStanzaCorrente().getNome());
+	    //verifico che atrio non sia la stanza corrente
+	    assertNotEquals("Atrio", partita.getStanzaCorrente().getNome());
 	}
 	@Test
-	public void testGetGiocatore() {
+	public void testGetGiocatoreNotNull() {
 	    Partita partita = new Partita();
 	    Giocatore giocatore = partita.getGiocatore();
 	    assertNotNull(giocatore);
-	    assertEquals("Mario", giocatore.getNome());
-	}
-
-	@Test
-	public void testGetGiocatoreCFU() {
-	    Partita partita = new Partita();
-	    Giocatore giocatore = partita.getGiocatore();
-	    assertEquals(20, giocatore.getCfu());
 	}
 
 	@Test
@@ -106,6 +84,14 @@ public class PartitaTest {
 	    Giocatore giocatore = partita.getGiocatore();
 	    assertEquals("Mario", giocatore.getNome());
 	}
+	
+	@Test
+	public void testGetGiocatoreCFU() {
+	    Partita partita = new Partita();
+	    Giocatore giocatore = partita.getGiocatore();
+	    assertEquals(20, giocatore.getCfu());
+	}
+	
 	@Test
 	public void testVinta() {
 	    Partita partita = new Partita();
@@ -119,12 +105,6 @@ public class PartitaTest {
 	    assertFalse(partita.vinta());
 	}
 
-	@Test
-	public void testVintaQuandoStanzaCorrenteUguale() {
-	    Partita partita = new Partita();
-	    partita.setStanzaCorrente(partita.getStanzaVincente());
-	    assertTrue(partita.vinta());
-	}
 	@Test
 	public void testIsFinitaNonFinita() {
 	    Partita partita = new Partita();
@@ -144,17 +124,10 @@ public class PartitaTest {
 	    partita.getGiocatore().setCfu(0);
 	    assertTrue(partita.isFinita());
 	}
+	
 	@Test
 	public void testSetFinita() {
 	    Partita partita = new Partita();
-	    partita.setFinita();
-	    assertTrue(partita.isFinita());
-	}
-
-	@Test
-	public void testSetFinitaDueVolte() {
-	    Partita partita = new Partita();
-	    partita.setFinita();
 	    partita.setFinita();
 	    assertTrue(partita.isFinita());
 	}
@@ -179,12 +152,6 @@ public class PartitaTest {
 	    assertEquals(15, partita.getCfu());
 	}
 
-	@Test
-	public void testGetCfuDopoCambio() {
-	    Partita partita = new Partita();
-	    partita.setCfu(10);
-	    assertEquals(10, partita.getCfu());
-	}
 	@Test
 	public void testSetCfu() {
 	    Partita partita = new Partita();

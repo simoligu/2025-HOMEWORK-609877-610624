@@ -61,24 +61,24 @@ public class Borsa {
 		for(int i=0;i<this.numeroAttrezzi;i++) {
 			if(this.attrezzi[i].getNome().equalsIgnoreCase(nomeAttrezzo)) {
 				a = this.attrezzi[i];
+				for(int j=i;j<this.numeroAttrezzi-1;j++) {
+					this.attrezzi[j]=this.attrezzi[j+1];
+				}
+				this.attrezzi[this.numeroAttrezzi-1]=null;
+				this.numeroAttrezzi--;
+				break;
 			}
-			for(int j=i;j<this.numeroAttrezzi;j++) {
-				this.attrezzi[j]=this.attrezzi[j+1];
-			}
-			this.attrezzi[this.numeroAttrezzi]=null;
-			this.numeroAttrezzi--;
-			break;
 		}
 		return a;
 	}
-	
+
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 
 		if (!this.isEmpty()) {
 			s.append("Contenuto borsa ("+this.getPeso()+"kg/"+this.getPesoMax()+"kg): ");
 			for (int i= 0; i<this.numeroAttrezzi; i++)
-				s.append(attrezzi[i].toString()+"");
+				s.append(attrezzi[i].toString()+" ");
 		}
 		else
 			s.append("Borsa vuota");
