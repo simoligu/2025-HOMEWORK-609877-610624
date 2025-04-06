@@ -5,6 +5,7 @@ import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.giocatore.Giocatore;
 public class PartitaTest {
+	//partitatest
 	@Test
 	public void testGetStanzaCorrente() {
 	    Partita partita = new Partita();
