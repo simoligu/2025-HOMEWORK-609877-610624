@@ -57,6 +57,10 @@ public class Giocatore {
 		return false;
 	}
 	
+	public boolean isVivo() {
+		return this.cfu>0;
+	}
+	
 	public boolean posaAttrezzo(Attrezzo attrezzo, Stanza stanza) {
 		if(this.borsa.hasAttrezzo(attrezzo.getNome())) {
 			if(stanza.addAttrezzo(attrezzo)) {
