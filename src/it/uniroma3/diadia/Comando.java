@@ -39,6 +39,7 @@ public class Comando {
 
     public String getParametro() {
         return this.parametro;
+        //daje roma
     }
 
     public boolean sconosciuto() {
