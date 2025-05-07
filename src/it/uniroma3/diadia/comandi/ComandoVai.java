@@ -22,11 +22,12 @@ public class ComandoVai implements Comando{
 		else {
 			int cfu = partita.getGiocatore().getCfu();
 			partita.getGiocatore().setCfu(--cfu);
-			ioConsole.mostraMessaggio("CFU rimanenti: " +cfu);
+//			ioConsole.mostraMessaggio("CFU rimanenti: " +cfu);
 		}
 		if(prossimaStanza!=null) {
 			partita.setStanzaCorrente(prossimaStanza);
-			ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
+//			ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
+			ioConsole.mostraMessaggio(partita.getStanzaCorrente().getNome());
 		}
 	}
 	@Override

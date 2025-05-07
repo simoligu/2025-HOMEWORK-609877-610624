@@ -1,13 +1,13 @@
 package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
-import it.uniroma3.diadia.IO;
+import it.uniroma3.diadia.IOConsole;
 
 public class ComandoGuarda implements Comando{
-	private IO io;
+	private IOConsole io = new IOConsole();
 	public void esegui(Partita partita) {
 		io.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 		io.mostraMessaggio(partita.getGiocatore().toString());
-		io.mostraMessaggio(partita.getCfu()+"cfu");
+//		io.mostraMessaggio(partita.getCfu()+"cfu");
 	}
 	public void setParametro(String parametro) {
 		

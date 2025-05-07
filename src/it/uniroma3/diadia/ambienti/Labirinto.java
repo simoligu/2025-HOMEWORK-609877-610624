@@ -11,13 +11,14 @@ public class Labirinto {
 	public void creaLabirinto() {
 		Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
-		Attrezzo piccone = new Attrezzo("piccone",9);
+		Attrezzo chiave = new Attrezzo("chiave",5);
 		/* crea stanze del labirinto */
-		Stanza atrio = new Stanza("Atrio");
-		Stanza aulaN11 = new Stanza("Aula N11");
+		Stanza atrio = new StanzaBloccata("Atrio", "chiave", "nord");
 		Stanza aulaN10 = new Stanza("Aula N10");
-		Stanza laboratorio = new Stanza("Laboratorio Campus");
 		Stanza biblioteca = new Stanza("Biblioteca");
+		Stanza aulaN11 = new StanzaBuia("Aula N11", "lanterna");
+		Stanza laboratorio = new StanzaMagica("Laboratorio Campus",1);
+		
 		
 		/* collega le stanze */
 		atrio.impostaStanzaAdiacente("nord", biblioteca);
@@ -36,8 +37,9 @@ public class Labirinto {
 		 /* pone gli attrezzi nelle stanze */
 		aulaN10.addAttrezzo(lanterna);
 		atrio.addAttrezzo(osso);
-		atrio.addAttrezzo(piccone);
+		aulaN11.addAttrezzo(chiave);
+		
 		entrata = atrio;
-		uscita= biblioteca;
+		uscita = biblioteca;
 	}
 }

@@ -1,4 +1,5 @@
 package it.uniroma3.diadia.ambienti;
+import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
@@ -36,7 +37,7 @@ public class Stanza {
     private int numeroStanzeAdiacenti;
     
 	private String[] direzioni;
-    
+    private IOConsole ioConsole = new IOConsole();
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
      * @param nome il nome della stanza
@@ -98,7 +99,7 @@ public class Stanza {
      * @return la descrizione della stanza
      */
     public String getDescrizione() {
-        return this.toString();
+    	return this.toString();
     }
 
     /**
@@ -209,4 +210,7 @@ public class Stanza {
 	    return direzioni;
     }
 
+	public int getNumeroAttrezzi() {
+		return numeroAttrezzi;
+	}
 }
