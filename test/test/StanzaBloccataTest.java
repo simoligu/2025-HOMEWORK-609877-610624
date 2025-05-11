@@ -10,26 +10,25 @@ package test;
 
 	    private StanzaBloccata stanzaBloccata;
 	    private Stanza stanzaLibera;
-	    private static final String CHIAVE = "chiave";
-	    private static final String DIREZIONE_BLOCCATA = "nord";
 
 	    @BeforeEach
 	    void setUp() {
-	        stanzaBloccata = new StanzaBloccata("Atrio", CHIAVE, DIREZIONE_BLOCCATA);
+	        stanzaBloccata = new StanzaBloccata("Atrio", "chiave", "nord");
 	        stanzaLibera = new Stanza("Biblioteca");
-	        stanzaBloccata.impostaStanzaAdiacente(DIREZIONE_BLOCCATA, stanzaLibera);
+	        stanzaBloccata.impostaStanzaAdiacente("nord", stanzaLibera);
 	    }
 
 	    @Test
 	    void testGetStanzaAdiacenteDirezioneBloccataSenzaChiave() {
-	        Stanza stanza = stanzaBloccata.getStanzaAdiacente(DIREZIONE_BLOCCATA);
+	        Stanza stanza = stanzaBloccata.getStanzaAdiacente("nord");
 	        assertEquals(stanzaBloccata, stanza);
 	    }
 
 	    @Test
 	    void testGetStanzaAdiacenteDirezioneBloccataConChiave() {
-	        stanzaBloccata.addAttrezzo(new Attrezzo(CHIAVE, 1));
-	        Stanza stanza = stanzaBloccata.getStanzaAdiacente(DIREZIONE_BLOCCATA);
+	    	Attrezzo chiave = new Attrezzo("chiave",5);
+	        stanzaBloccata.addAttrezzo(chiave);
+	        Stanza stanza = stanzaBloccata.getStanzaAdiacente("nord");
 	        assertEquals(stanzaLibera, stanza);
 	    }
 
@@ -49,7 +48,8 @@ package test;
 
 	    @Test
 	    void testGetDescrizioneConChiave() {
-	        stanzaBloccata.addAttrezzo(new Attrezzo(CHIAVE, 1));
+	        Attrezzo chiave = new Attrezzo("chiave",5);
+	        stanzaBloccata.addAttrezzo(chiave);
 	        String descrizione = stanzaBloccata.getDescrizione();
 	        assertFalse(descrizione.contains("c'è una serratura, serve una chiave per aprirla."));
 	    }

@@ -1,10 +1,6 @@
 package it.uniroma3.diadia.comandi;
 
-
-//import it.uniroma3.diadia.giocatore.Giocatore;
-import java.util.Scanner;
 import it.uniroma3.diadia.Partita;
-import it.uniroma3.diadia.IOConsole;
 
 /**
  * Questa classe modella un comando.
