@@ -52,6 +52,7 @@ import it.uniroma3.diadia.IOConsole;
 public interface Comando{
 	public void esegui(Partita partita);
 	public void setParametro(String parametro);
-	public void getNome();
-	public void getParametro();
+	public String getNome();
+	public String getParametro();
+	//public void setIo(IO io);
 }

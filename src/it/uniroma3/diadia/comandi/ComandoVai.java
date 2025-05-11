@@ -36,12 +36,14 @@ public class ComandoVai implements Comando{
 		
 	}
 	@Override
-	public void getNome() {
+	public String getNome() {
+		return direzione;
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void getParametro() {
+	public String getParametro() {
+		return direzione;
 		// TODO Auto-generated method stub
 		
 	}

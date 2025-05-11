@@ -9,12 +9,14 @@ public class ComandoNonValido implements Comando{
 		
 	}
 	@Override
-	public void getNome() {
+	public String getNome() {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void getParametro() {
+	public String getParametro() {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}

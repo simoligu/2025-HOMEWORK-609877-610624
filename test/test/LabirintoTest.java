@@ -1,7 +1,9 @@
 package test;
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.ambienti.Stanza;;
 public class LabirintoTest {
 	@Test
@@ -20,9 +22,12 @@ public class LabirintoTest {
 	@Test
 	public void testStanzaAdiacenteNord() {
 		Labirinto labirinto = new Labirinto();
-
+		
 		Stanza atrio = labirinto.entrata;
 		Stanza biblioteca = labirinto.uscita;
+		assertNotEquals(biblioteca, atrio.getStanzaAdiacente("nord"), "La stanza a nord di Atrio dovrebbe essere Biblioteca");
+		Attrezzo chiave=new Attrezzo("chiave",5);
+		atrio.addAttrezzo(chiave);
 		assertEquals(biblioteca, atrio.getStanzaAdiacente("nord"), "La stanza a nord di Atrio dovrebbe essere Biblioteca");
 	}
 }

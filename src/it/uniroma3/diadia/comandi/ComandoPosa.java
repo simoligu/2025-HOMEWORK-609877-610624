@@ -28,12 +28,14 @@ public class ComandoPosa implements Comando{
 		this.nomeAttrezzo = parametro;
 	}
 	@Override
-	public void getNome() {
+	public String getNome() {
+		return nomeAttrezzo;
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void getParametro() {
+	public String getParametro() {
+		return nomeAttrezzo;
 		// TODO Auto-generated method stub
 		
 	}
